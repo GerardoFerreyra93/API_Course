@@ -54,9 +54,6 @@ namespace RestSharpNunit.RequestValidations
             jsonSerializerPost = JsonConvert.DeserializeObject<JsonSerializerPost>(response.Content);
             Assert.That(response.ContentType, Is.EqualTo("application/json"));
             
-
-
-
         }
 
     }

@@ -15,8 +15,7 @@ namespace RestSharpNunit
         {
             RestClient client = new RestClient("http://api.zippopotam.us");
             RestRequest request = new RestRequest("nl/3825", Method.Get);
-            RestResponse response = client.Execute(request);       
-
+            RestResponse response = client.Execute(request);      
             Assert.That(response.ContentType, Is.EqualTo("application/json")); //cuando hay problemas en el codigo para validar
         }
 
@@ -33,9 +32,8 @@ namespace RestSharpNunit
         [Category("ApiTest")]
         public void ValidatePostSerializer()
         {
-
-            ValidateSerializerPost();       
-                      
+            ValidateSerializerPost();
+            
         }
     }
 }
