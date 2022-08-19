@@ -42,17 +42,19 @@ namespace RestSharpNunit.RequestValidations
             
             var postValues = new JsonSerializerPost
             {
-                name = "morpheus",
-                job = "leader"
+                name = "gerardo",
+                job = "qa"             
             };
 
             string jsonString = JsonSerializer.Serialize(postValues);
             ExecuteGenericRequest("https://reqres.in/api/users", Method.Post);                  
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));//VALIDACION CODIGO 201 CREATED SUCCESS
             Console.WriteLine(response.Content);//validacion usr creado
+            //Console.WriteLine(jsonString);
 
-            jsonSerializerPost = JsonConvert.DeserializeObject<JsonSerializerPost>(response.Content);
-            Assert.That(response.ContentType, Is.EqualTo("application/json"));
+            jsonSerializerPost = JsonConvert.DeserializeObject<JsonSerializerPost>(jsonString);
+            Assert.AreEqual(jsonSerializerPost.name, "gerardo");
+            //Console.WriteLine(jsonSerializerPost.name); // validar values post
             
         }
 
