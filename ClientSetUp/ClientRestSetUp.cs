@@ -14,12 +14,23 @@ namespace RestSharpNunit.ClientSetUp
         protected RestResponse response;
 
         private string mainUrl = "http://api.zippopotam.us";
-        
-        protected void ExecuteGenericRequest(string url, Method method)
+        private string mainUrlPost = "https://reqres.in";
+
+        protected void ExecuteGenericRequest(string url, Method method, object body)
         {
-            client = new RestClient(mainUrl);
+            client = new RestClient(mainUrlPost);
             request = new RestRequest(url, method);
             response = client.Execute(request);
+
+            if (body == null)
+            {
+                response = client.Execute(request);
+            }
+            else
+            {
+                request = request.AddBody(body);
+                response = client.Execute(request);
+            }
         }
     }
 }
