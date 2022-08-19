@@ -26,6 +26,16 @@ namespace RestSharpNunit
         {
             ValidateResponseIsJSON();
             ValidateResponseIsNetherlands();
+            
+        }
+
+        [Test]
+        [Category("ApiTest")]
+        public void ValidatePostSerializer()
+        {
+
+            ValidateSerializerPost();       
+                      
         }
     }
 }
